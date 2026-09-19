@@ -1,0 +1,32 @@
+[
+	{
+		"name": "Emergancy Fuel",
+		"description": "Use this to gain one more fuel (one-time use)",
+		"unique": false,
+		"price": 150
+	},
+	{
+		"name": "Bag of Holding",
+		"description": "Use this to gain 50 cargo space for the rest of the sector (one-time use)",
+		"unique": true,
+		"price": 400
+	},
+	{
+		"name": "AI Navigation Unit",
+		"description": "Use this and your next jump won't be restricted by the jump paths (one-time use)",
+		"unique": false,
+		"price": 200
+	},
+	{
+		"name": "Backup Camera",
+		"description": "Use this and your next jump can be to previously visited stars (one-time use)",
+		"unique": false,
+		"price": 150
+	},
+	{
+		"name": "Reactor Cooler",
+		"description": "Cools down your ships reactor, giving you 10 more seconds to decide your next jump (one-time use)",
+		"unique": false,
+		"price": 75
+	}
+]

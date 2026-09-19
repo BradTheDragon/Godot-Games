@@ -1,53 +1,53 @@
-[gd_scene load_steps=8 format=3 uid="uid://tk8qqndpxni5"]
+[gd_scene format=3 uid="uid://tk8qqndpxni5"]
 
 [ext_resource type="PackedScene" uid="uid://c1wwbxgnix77t" path="res://Game Scenes/player_ship.tscn" id="2_358im"]
 [ext_resource type="PackedScene" uid="uid://cdmq3tflqr2rb" path="res://Game Scenes/hud.tscn" id="3_0yri8"]
-[ext_resource type="Script" path="res://Scripts/sector_generator.gd" id="4_0ylgj"]
+[ext_resource type="Script" uid="uid://b0vagrq3gcbhg" path="res://Scripts/sector_generator.gd" id="4_0ylgj"]
 [ext_resource type="PackedScene" uid="uid://bgwvkntsal3c6" path="res://Game Scenes/finish_sector_ui.tscn" id="4_8hylf"]
 [ext_resource type="PackedScene" uid="uid://lx0dxlqs702b" path="res://Game Scenes/shop_ui.tscn" id="5_puawf"]
 [ext_resource type="PackedScene" uid="uid://dprk435oc8ebg" path="res://Game Scenes/market_screen.tscn" id="6_market"]
 [ext_resource type="PackedScene" uid="uid://c32v7h1upwfuf" path="res://Game Scenes/items_panel.tscn" id="7_rwdof"]
 
-[node name="GalaxyMap" type="Node2D"]
+[node name="GalaxyMap" type="Node2D" unique_id=483608329]
 
-[node name="PathContainer" type="Node2D" parent="."]
+[node name="PathContainer" type="Node2D" parent="." unique_id=826622898]
 
-[node name="StarContainer" type="Node2D" parent="."]
+[node name="StarContainer" type="Node2D" parent="." unique_id=1006821964]
 
-[node name="PlayerShip" parent="." instance=ExtResource("2_358im")]
+[node name="PlayerShip" parent="." unique_id=232457695 instance=ExtResource("2_358im")]
 position = Vector2(-37, -28)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1533825095]
 zoom = Vector2(3, 3)
 
-[node name="SectorGenerator" type="Node2D" parent="."]
+[node name="SectorGenerator" type="Node2D" parent="." unique_id=2020289860]
 script = ExtResource("4_0ylgj")
 num_stars = 11
 min_spacing = 100.0
 num_connections = 3
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=41009458]
 
-[node name="Hud" parent="CanvasLayer" instance=ExtResource("3_0yri8")]
+[node name="Hud" parent="CanvasLayer" unique_id=1207894727 instance=ExtResource("3_0yri8")]
 z_index = 1
 
-[node name="IdleUIContainer" type="Control" parent="CanvasLayer"]
+[node name="IdleUIContainer" type="Control" parent="CanvasLayer" unique_id=691154644]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="FinishSectorUI" parent="CanvasLayer" instance=ExtResource("4_8hylf")]
+[node name="FinishSectorUI" parent="CanvasLayer" unique_id=759815449 instance=ExtResource("4_8hylf")]
 visible = false
 z_index = 1
 
-[node name="ShopUI" parent="CanvasLayer" instance=ExtResource("5_puawf")]
+[node name="ShopUI" parent="CanvasLayer" unique_id=692307307 instance=ExtResource("5_puawf")]
 visible = false
 z_index = 1
 
-[node name="MarketScreen" parent="CanvasLayer" instance=ExtResource("6_market")]
+[node name="MarketScreen" parent="CanvasLayer" unique_id=271299494 instance=ExtResource("6_market")]
 z_index = 2
 
-[node name="Items Panel" parent="CanvasLayer" instance=ExtResource("7_rwdof")]
+[node name="Items Panel" parent="CanvasLayer" unique_id=1407334474 instance=ExtResource("7_rwdof")]
 visible = false

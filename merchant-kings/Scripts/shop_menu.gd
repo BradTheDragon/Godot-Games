@@ -102,4 +102,3 @@ func reset_all():
 	for node in upgrade_nodes:
 		node.set_sold(false)
 	sold_upgrades = []
-
