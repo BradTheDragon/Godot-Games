@@ -1,0 +1,51 @@
+[
+	{
+		"name": "Bank Account",
+		"description": "Start with an extra 50 credits at the beginning of each sector",
+		"price": 85,
+		"effects": {"starting_credits": 50},
+		"isdone": null
+	},
+	{
+		"name": "Broken Fuel Gauge",
+		"description": "Start with an extra 1 fuel at the start of each sector",
+		"price": 350,
+		"effects": {"starting_fuel": 1},
+		"isdone": null
+	},
+	{
+		"name": "Full Cargo Bay",
+		"description": "Start with 2 extra cargo at the start of the next sector",
+		"price": 75,
+		"effects": {"starting_cargo": 2},
+		"isdone": false
+	},
+	{
+		"name": "External Fuel Tank",
+		"description": "Start with 1 extra fuel at the start of the next sector",
+		"price": 125,
+		"effects": {"starting_fuel": 1},
+		"isdone": false
+	},
+	{
+		"name": "Bigger Storage Bay",
+		"description": "You can fit 8 more items in your cargo hold",
+		"price": 225,
+		"effects": {"cargo_max": 8},
+		"isdone": null
+	},
+	{
+		"name": "Negotiation Lessons",
+		"description": "Markets have a 5 credit lower minimum and a 15 credit higher maximum",
+		"price": 150,
+		"effects": {"market_min": -5, "market_max": 15},
+		"isdone": null
+	},
+	{
+		"name": "Trade War",
+		"description": "Markets are more volatile in the next sector",
+		"price": 200,
+		"effects": {"market_volatility": 2},
+		"isdone": false
+	}
+]

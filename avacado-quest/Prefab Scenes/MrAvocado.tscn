@@ -1,0 +1,140 @@
+[gd_scene load_steps=18 format=3 uid="uid://ifcov42osv4h"]
+
+[ext_resource type="Script" path="res://Scripts/mr_avocado.gd" id="1_g1gmd"]
+[ext_resource type="Texture2D" uid="uid://c5l8wp0n54aj1" path="res://Art/Mr. Avocado/total.png" id="2_h7qsb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v1pj8"]
+radius = 11.0
+height = 39.0
+
+[sub_resource type="Animation" id="Animation_evjmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_m3awb"]
+resource_name = "idle"
+length = 0.444456
+loop_mode = 1
+step = 0.111111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27]
+}
+
+[sub_resource type="Animation" id="Animation_rd3vb"]
+resource_name = "jump"
+length = 1.22223
+loop_mode = 1
+step = 0.111111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889, 1, 1.11111, 1.22222),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_56g0h"]
+resource_name = "walk"
+length = 0.444456
+loop_mode = 1
+step = 0.111111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ye6x"]
+_data = {
+"RESET": SubResource("Animation_evjmq"),
+"idle": SubResource("Animation_m3awb"),
+"jump": SubResource("Animation_rd3vb"),
+"walk": SubResource("Animation_56g0h")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y1hv8"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3t7aw"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x1lu1"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ph0w3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6xt0o"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4i2ve"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gbadf"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0mrah"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pmgc6"]
+states/idle/node = SubResource("AnimationNodeAnimation_y1hv8")
+states/idle/position = Vector2(463, 41)
+states/jump/node = SubResource("AnimationNodeAnimation_3t7aw")
+states/jump/position = Vector2(624, 122)
+states/walk/node = SubResource("AnimationNodeAnimation_x1lu1")
+states/walk/position = Vector2(463, 196)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ph0w3"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_6xt0o"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_4i2ve"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_gbadf"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_0mrah")]
+
+[node name="MrAvocado" type="CharacterBody2D"]
+script = ExtResource("1_g1gmd")
+SPEED = 100.0
+JUMP_VELOCITY = -345.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("CapsuleShape2D_v1pj8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3ye6x")
+}
+autoplay = "idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+texture = ExtResource("2_h7qsb")
+hframes = 12
+vframes = 3
+frame = 1
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_pmgc6")
+anim_player = NodePath("../AnimationPlayer")

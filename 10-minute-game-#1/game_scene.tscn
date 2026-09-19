@@ -1,0 +1,176 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1lmy4ircb54a"]
+
+[ext_resource type="Script" path="res://addons/shape_texture_2d/shape_texture_2d.gd" id="1_yruny"]
+[ext_resource type="Script" path="res://addons/shape_texture_2d/drawable_capsule.gd" id="2_0tgll"]
+[ext_resource type="Script" path="res://addons/shape_texture_2d/drawable_polygon.gd" id="3_2svb3"]
+[ext_resource type="Script" path="res://base.gd" id="3_qqoh3"]
+[ext_resource type="Script" path="res://player.gd" id="4_h8ph3"]
+[ext_resource type="Script" path="res://spawner.gd" id="6_1kng8"]
+
+[sub_resource type="Resource" id="Resource_pru8y"]
+script = ExtResource("2_0tgll")
+width = 1.0
+
+[sub_resource type="Texture2D" id="Texture2D_hvk1y"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_yruny")
+size = Vector2i(30, 30)
+shape = SubResource("Resource_pru8y")
+fill_type = 0
+fill_color = Color(0, 0, 0, 0.584314)
+fill_from = Vector2(0, 0)
+fill_to = Vector2(1, 0)
+fill_repeat = "pad"
+stroke_type = 0
+stroke_width = 0.0
+stroke_color = Color(0, 0, 0, 1)
+stroke_from = Vector2(0, 0)
+stroke_to = Vector2(1, 0)
+stroke_repeat = "pad"
+stroke_joint = "round"
+offset = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bqoxs"]
+radius = 15.0333
+
+[sub_resource type="Resource" id="Resource_in7vb"]
+script = ExtResource("3_2svb3")
+points = 3
+is_star = false
+star_inset = 0.5
+
+[sub_resource type="Texture2D" id="Texture2D_6pf3a"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_yruny")
+size = Vector2i(30, 30)
+shape = SubResource("Resource_in7vb")
+fill_type = 0
+fill_color = Color(1, 1, 1, 1)
+fill_from = Vector2(0, 0)
+fill_to = Vector2(1, 0)
+fill_repeat = "pad"
+stroke_type = 0
+stroke_width = 0.0
+stroke_color = Color(0, 0, 0, 1)
+stroke_from = Vector2(0, 0)
+stroke_to = Vector2(1, 0)
+stroke_repeat = "pad"
+stroke_joint = "round"
+offset = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3s0c"]
+bg_color = Color(0.425173, 0.674064, 0.388298, 1)
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = SubResource("Texture2D_hvk1y")
+script = ExtResource("3_qqoh3")
+
+[node name="Area2D" type="Area2D" parent="Base"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Area2D"]
+shape = SubResource("CircleShape2D_bqoxs")
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = SubResource("Texture2D_6pf3a")
+script = ExtResource("4_h8ph3")
+
+[node name="Timer" type="Timer" parent="Player"]
+wait_time = 0.1
+autostart = true
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("6_1kng8")
+
+[node name="Timer" type="Timer" parent="Spawner"]
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 40.0
+offset_top = 28.0
+offset_right = 323.0
+offset_bottom = 64.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_b3s0c")
+value = 100.0
+
+[node name="GameOver" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12549, 0.12549, 0.12549, 0.556863)
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -224.0
+offset_right = 215.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "GAME OVER"
+
+[node name="Button" type="Button" parent="CanvasLayer/GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -125.0
+offset_right = 73.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 33
+text = "RESTART"
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.647059)
+theme_override_font_sizes/font_size = 43
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="area_entered" from="Base/Area2D" to="Base" method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/GameOver/Button" to="Base" method="_on_button_pressed"]

@@ -1,0 +1,208 @@
+[gd_scene load_steps=23 format=3 uid="uid://buemaebvn8ntt"]
+
+[ext_resource type="FontFile" uid="uid://c7ddcuvnogiwp" path="res://Art/Fonts/Jacquard12-Regular.ttf" id="1_uqchi"]
+[ext_resource type="Texture2D" uid="uid://bhfw7ktfy4iwa" path="res://Art/UI/PlayButton.png" id="2_jsxnk"]
+[ext_resource type="Texture2D" uid="uid://cbxhmdpuybaik" path="res://Art/UI/LoadButton.png" id="3_0vxgi"]
+[ext_resource type="Texture2D" uid="uid://baq2ko67fyh3i" path="res://Art/UI/SettingsButton.png" id="4_rym1t"]
+[ext_resource type="Texture2D" uid="uid://cxnynu511bvfv" path="res://Art/UI/ExitButton.png" id="5_t4d6l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqyqu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_po61e"]
+texture = ExtResource("2_jsxnk")
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s75al"]
+texture = ExtResource("2_jsxnk")
+region_rect = Rect2(128, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cmbgh"]
+texture = ExtResource("2_jsxnk")
+region_rect = Rect2(192, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxu8w"]
+texture = ExtResource("2_jsxnk")
+region_rect = Rect2(64, 0, 64, 64)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ka76r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xevvl"]
+texture = ExtResource("3_0vxgi")
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wl047"]
+texture = ExtResource("3_0vxgi")
+region_rect = Rect2(128, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n2s45"]
+texture = ExtResource("3_0vxgi")
+region_rect = Rect2(192, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2by3h"]
+texture = ExtResource("3_0vxgi")
+region_rect = Rect2(64, 0, 64, 64)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m50wm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hxvoi"]
+texture = ExtResource("4_rym1t")
+region_rect = Rect2(64, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0v5v7"]
+texture = ExtResource("4_rym1t")
+region_rect = Rect2(128, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1db4y"]
+texture = ExtResource("4_rym1t")
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxmf6"]
+texture = ExtResource("5_t4d6l")
+region_rect = Rect2(64, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_12pc8"]
+texture = ExtResource("5_t4d6l")
+region_rect = Rect2(128, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_871ds"]
+texture = ExtResource("5_t4d6l")
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="MainMenuUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="MainOptions" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 375
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 375
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainOptions"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Label" type="Label" parent="MainOptions/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45098, 0.560784, 0.341176, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("1_uqchi")
+theme_override_font_sizes/font_size = 90
+text = "Avocado Quest"
+horizontal_alignment = 1
+
+[node name="seperator" type="Control" parent="MainOptions/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="MainOptions/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 18
+
+[node name="Text" type="VBoxContainer" parent="MainOptions/VBoxContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 75
+
+[node name="Label" type="Label" parent="MainOptions/VBoxContainer/HBox/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45098, 0.560784, 0.341176, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_uqchi")
+theme_override_font_sizes/font_size = 50
+text = "Start"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="MainOptions/VBoxContainer/HBox/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45098, 0.560784, 0.341176, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_uqchi")
+theme_override_font_sizes/font_size = 50
+text = "Load"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="MainOptions/VBoxContainer/HBox/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45098, 0.560784, 0.341176, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_uqchi")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="MainOptions/VBoxContainer/HBox/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45098, 0.560784, 0.341176, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_uqchi")
+theme_override_font_sizes/font_size = 50
+text = "Exit"
+horizontal_alignment = 2
+
+[node name="Buttons" type="VBoxContainer" parent="MainOptions/VBoxContainer/HBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="PlayButton" type="Button" parent="MainOptions/VBoxContainer/HBox/Buttons"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rqyqu")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_po61e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_s75al")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cmbgh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_uxu8w")
+
+[node name="LoadButton" type="Button" parent="MainOptions/VBoxContainer/HBox/Buttons"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ka76r")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xevvl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wl047")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_n2s45")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2by3h")
+
+[node name="SettingsButton" type="Button" parent="MainOptions/VBoxContainer/HBox/Buttons"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m50wm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hxvoi")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0v5v7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1db4y")
+
+[node name="ExitButton" type="Button" parent="MainOptions/VBoxContainer/HBox/Buttons"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m50wm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qxmf6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_12pc8")
+theme_override_styles/normal = SubResource("StyleBoxTexture_871ds")

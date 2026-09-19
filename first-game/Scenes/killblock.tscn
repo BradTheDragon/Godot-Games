@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cled7r2xce1c1"]
+
+[ext_resource type="Texture2D" uid="uid://b8t6440tmu56h" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="1_amwwy"]
+[ext_resource type="PackedScene" uid="uid://cxqahbr1cbgkd" path="res://Scenes/killzone.tscn" id="2_chqn7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5k7qc"]
+size = Vector2(16, 16)
+
+[node name="Killblock" type="Sprite2D"]
+texture = ExtResource("1_amwwy")
+region_enabled = true
+region_rect = Rect2(80, 32, 16, 16)
+
+[node name="Killzone" parent="." instance=ExtResource("2_chqn7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("RectangleShape2D_5k7qc")

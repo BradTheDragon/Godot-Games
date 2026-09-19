@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cdmq3tflqr2rb"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 590.0
+offset_bottom = 69.0
+theme_override_constants/separation = 49
+
+[node name="Credits" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "$: 80"
+
+[node name="Fuel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Fuel: 5"
+
+[node name="Cargo" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Cargo: 20"
+
+[node name="Mortgage" type="Label" parent="."]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -224.0
+offset_bottom = 69.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 50
+text = "Mortgage: 700"
+vertical_alignment = 2
+
+[node name="MoveTimerLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 80.0
+offset_right = 350.0
+offset_bottom = 140.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_font_sizes/font_size = 36
+text = "Next move: 10s (or -1 Fuel)"
+horizontal_alignment = 1
+
+[node name="FinishSectorButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1701.0
+offset_top = 999.0
+offset_right = 1876.0
+offset_bottom = 1059.0
+theme_override_font_sizes/font_size = 24
+text = "Finish Sector"
+
+[node name="OpenItemPanelButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 40.0
+offset_top = 1000.0
+offset_right = 215.0
+offset_bottom = 1060.0
+theme_override_font_sizes/font_size = 24
+text = "Items/Upgrades"

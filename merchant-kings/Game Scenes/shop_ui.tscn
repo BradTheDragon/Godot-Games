@@ -1,0 +1,134 @@
+[gd_scene load_steps=4 format=3 uid="uid://lx0dxlqs702b"]
+
+[ext_resource type="Script" path="res://Scripts/shop_menu.gd" id="1_fy16q"]
+[ext_resource type="PackedScene" uid="uid://b4qjud2qdrpgq" path="res://Game Scenes/upgrade_ui.tscn" id="1_lonf7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvp32"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 0.941176)
+
+[node name="ShopUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fy16q")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvp32")
+
+[node name="GoRight" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.004
+anchor_bottom = 0.007
+offset_left = 816.0
+offset_top = 504.0
+offset_right = 867.32
+offset_bottom = 628.44
+theme_override_font_sizes/font_size = 90
+text = ">"
+
+[node name="GoLeft" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.004
+anchor_bottom = 0.007
+offset_left = 40.0
+offset_top = 504.0
+offset_right = 91.32
+offset_bottom = 628.44
+theme_override_font_sizes/font_size = 90
+text = "<"
+
+[node name="Upgrades" type="Label" parent="."]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 64.0
+offset_right = 672.0
+offset_bottom = 147.0
+theme_override_font_sizes/font_size = 60
+text = "UPGRADES"
+horizontal_alignment = 1
+
+[node name="Upgrade0" parent="Upgrades" instance=ExtResource("1_lonf7")]
+offset_left = -136.0
+offset_top = 88.0
+offset_right = 164.0
+offset_bottom = 488.0
+
+[node name="Upgrade1" parent="Upgrades" instance=ExtResource("1_lonf7")]
+offset_left = 216.0
+offset_top = 88.0
+offset_right = 516.0
+offset_bottom = 488.0
+
+[node name="Upgrade2" parent="Upgrades" instance=ExtResource("1_lonf7")]
+offset_left = -136.0
+offset_top = 520.0
+offset_right = 164.0
+offset_bottom = 920.0
+
+[node name="Upgrade3" parent="Upgrades" instance=ExtResource("1_lonf7")]
+offset_left = 216.0
+offset_top = 520.0
+offset_right = 516.0
+offset_bottom = 920.0
+
+[node name="Items" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1008.0
+offset_top = 64.0
+offset_right = 1416.0
+offset_bottom = 147.0
+theme_override_font_sizes/font_size = 60
+text = "ITEMS"
+horizontal_alignment = 1
+
+[node name="Item0" parent="Items" instance=ExtResource("1_lonf7")]
+offset_left = 48.0
+offset_top = 88.0
+offset_right = 348.0
+offset_bottom = 488.0
+
+[node name="Item1" parent="Items" instance=ExtResource("1_lonf7")]
+offset_left = 48.0
+offset_top = 520.0
+offset_right = 348.0
+offset_bottom = 920.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1544.0
+offset_top = 24.0
+offset_right = 1853.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 60
+text = "My Credits"
+horizontal_alignment = 1
+
+[node name="Credits" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1624.0
+offset_top = 112.0
+offset_right = 1795.0
+offset_bottom = 195.0
+theme_override_font_sizes/font_size = 60
+text = "$1000"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1408.0
+offset_top = 968.0
+offset_right = 1902.0
+offset_bottom = 1059.0
+theme_override_font_sizes/font_size = 60
+text = "Start New Sector"

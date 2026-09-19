@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu2j3qcllb3l"]
+
+[ext_resource type="Texture2D" uid="uid://cfg1s6ph4kui" path="res://Art/map/testMap.jpg" id="1_06cuj"]
+[ext_resource type="Texture2D" uid="uid://bmtmej22wf0v4" path="res://Art/UI/MapUI/town.png" id="2_yx3xj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_827b5"]
+texture = ExtResource("2_yx3xj")
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dp5s2"]
+texture = ExtResource("2_yx3xj")
+region_rect = Rect2(64, 0, 64, 64)
+
+[node name="map_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_06cuj")
+expand_mode = 2
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 229.0
+offset_top = 172.0
+offset_right = 237.0
+offset_bottom = 180.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_827b5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dp5s2")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuem2wyh8nule"]
+
+[ext_resource type="Texture2D" uid="uid://ljylfuyr38xh" path="res://star_path.png" id="1_v358y"]
+
+[node name="PathScene" type="Line2D"]
+texture_repeat = 2
+points = PackedVector2Array(0, 0)
+default_color = Color(0.419813, 0.419813, 0.419813, 1)
+texture = ExtResource("1_v358y")
+texture_mode = 1

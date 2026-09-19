@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbwi7t5teveuy"]
+
+[ext_resource type="Script" path="res://addons/shape_texture_2d/shape_texture_2d.gd" id="1_assj8"]
+[ext_resource type="Script" path="res://addons/shape_texture_2d/drawable_rectangle.gd" id="2_n5861"]
+[ext_resource type="Script" path="res://enemy.gd" id="3_h8xsh"]
+
+[sub_resource type="Resource" id="Resource_qjb4d"]
+script = ExtResource("2_n5861")
+corner_rounding = 0.0
+
+[sub_resource type="Texture2D" id="Texture2D_ph28k"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_assj8")
+size = Vector2i(50, 50)
+shape = SubResource("Resource_qjb4d")
+fill_type = 0
+fill_color = Color(0.69423, 0.0978323, 0, 1)
+fill_from = Vector2(0, 0)
+fill_to = Vector2(1, 0)
+fill_repeat = "pad"
+stroke_type = 0
+stroke_width = 0.0
+stroke_color = Color(0, 0, 0, 1)
+stroke_from = Vector2(0, 0)
+stroke_to = Vector2(1, 0)
+stroke_repeat = "pad"
+stroke_joint = "round"
+offset = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_h62hx"]
+script = ExtResource("2_n5861")
+corner_rounding = 0.0
+
+[sub_resource type="Texture2D" id="Texture2D_hrktx"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_assj8")
+size = Vector2i(50, 50)
+shape = SubResource("Resource_h62hx")
+fill_type = 3
+fill_color = Color(1, 1, 1, 0)
+fill_from = Vector2(0, 0)
+fill_to = Vector2(1, 0)
+fill_repeat = "pad"
+stroke_type = 0
+stroke_width = 3.0
+stroke_color = Color(0, 0, 0, 1)
+stroke_from = Vector2(0, 0)
+stroke_to = Vector2(1, 0)
+stroke_repeat = "pad"
+stroke_joint = "round"
+offset = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_och1q"]
+size = Vector2(50, 50)
+
+[node name="enemy" type="Sprite2D" groups=["enemys"]]
+z_index = 1
+texture = SubResource("Texture2D_ph28k")
+script = ExtResource("3_h8xsh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+texture = SubResource("Texture2D_hrktx")
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_och1q")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

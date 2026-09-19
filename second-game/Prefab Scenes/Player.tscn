@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk0ef5upy0e3m"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_5vp3l"]
+[ext_resource type="Texture2D" uid="uid://b0t75v7ma562x" path="res://Assets/player.png" id="2_havwq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcjj8"]
+size = Vector2(8, 8)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_5vp3l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_havwq")
+region_rect = Rect2(36, 0, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hcjj8")
+
+[node name="right" type="RayCast2D" parent="."]
+target_position = Vector2(11, 0)
+
+[node name="down" type="RayCast2D" parent="."]
+target_position = Vector2(0, 11)
+
+[node name="left" type="RayCast2D" parent="."]
+target_position = Vector2(-11, 0)
+
+[node name="up" type="RayCast2D" parent="."]
+target_position = Vector2(0, -11)

@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=3 uid="uid://c32v7h1upwfuf"]
+
+[ext_resource type="PackedScene" uid="uid://dit3xufnw7r36" path="res://Game Scenes/item_ui.tscn" id="1_1vy7d"]
+[ext_resource type="Script" path="res://Scripts/items_panel.gd" id="1_xm5oo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvp32"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 0.941176)
+
+[node name="Items Panel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xm5oo")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvp32")
+
+[node name="GoRight" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.004
+anchor_bottom = 0.007
+offset_left = 1296.0
+offset_top = 504.0
+offset_right = 1347.32
+offset_bottom = 628.44
+theme_override_font_sizes/font_size = 90
+text = ">"
+
+[node name="GoLeft" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.004
+anchor_bottom = 0.007
+offset_left = 496.0
+offset_top = 504.0
+offset_right = 547.32
+offset_bottom = 628.44
+theme_override_font_sizes/font_size = 90
+text = "<"
+
+[node name="Items" type="Label" parent="."]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 56.0
+offset_right = 1160.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 60
+text = "Upgrades/Items"
+horizontal_alignment = 1
+
+[node name="ItemUI0" parent="Items" instance=ExtResource("1_1vy7d")]
+offset_left = -96.0
+offset_top = 96.0
+offset_right = 204.0
+offset_bottom = 496.0
+
+[node name="ItemUI1" parent="Items" instance=ExtResource("1_1vy7d")]
+offset_left = 256.0
+offset_top = 96.0
+offset_right = 556.0
+offset_bottom = 496.0
+
+[node name="ItemUI2" parent="Items" instance=ExtResource("1_1vy7d")]
+offset_left = -96.0
+offset_top = 528.0
+offset_right = 204.0
+offset_bottom = 928.0
+
+[node name="ItemUI3" parent="Items" instance=ExtResource("1_1vy7d")]
+offset_left = 256.0
+offset_top = 528.0
+offset_right = 556.0
+offset_bottom = 928.0
+
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1408.0
+offset_top = 968.0
+offset_right = 1902.0
+offset_bottom = 1059.0
+theme_override_font_sizes/font_size = 60
+text = "Return"

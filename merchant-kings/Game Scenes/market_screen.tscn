@@ -1,0 +1,283 @@
+[gd_scene load_steps=5 format=3 uid="uid://dprk435oc8ebg"]
+
+[ext_resource type="Script" path="res://Scripts/market_screen.gd" id="1_market"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 0.941176)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_buy"]
+bg_color = Color(0.564499, 0.622242, 0.528906, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sell"]
+bg_color = Color(0.462483, 0.39211, 0.355605, 1)
+
+[node name="MarketScreen" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_market")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Market"
+horizontal_alignment = 1
+
+[node name="HeaderHBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="StarNameLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Star1"
+
+[node name="BuyPriceLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Buy: $50"
+
+[node name="SellPriceLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Sell: $40"
+
+[node name="TrendLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.6, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "⭧ +2"
+
+[node name="PlayerStatsHBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="MarginContainer/VBoxContainer/PlayerStatsHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "$: 1000"
+
+[node name="CargoLabel" type="Label" parent="MarginContainer/VBoxContainer/PlayerStatsHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Cargo: 0"
+
+[node name="FuelLabel" type="Label" parent="MarginContainer/VBoxContainer/PlayerStatsHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Fuel: 6"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TradeHBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="BuySection" type="PanelContainer" parent="MarginContainer/VBoxContainer/TradeHBox"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_buy")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BuyTitle" type="Label" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Buy"
+horizontal_alignment = 1
+
+[node name="QtyRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BuyMinus" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer/VBoxContainer/QtyRow"]
+custom_minimum_size = Vector2(60, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "-"
+
+[node name="BuyQtyLabel" type="Label" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer/VBoxContainer/QtyRow"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+
+[node name="BuyPlus" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer/VBoxContainer/QtyRow"]
+custom_minimum_size = Vector2(60, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "+"
+
+[node name="PresetRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Buy5" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer/VBoxContainer/PresetRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "+5"
+
+[node name="Buy10" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer/VBoxContainer/PresetRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "+10"
+
+[node name="BuyMax" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer/VBoxContainer/PresetRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Max"
+
+[node name="BuyReset" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer/VBoxContainer/PresetRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Reset"
+
+[node name="BuyTotalLabel" type="Label" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Total: $0"
+horizontal_alignment = 1
+
+[node name="BuyButton" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/BuySection/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Buy"
+
+[node name="SellSection" type="PanelContainer" parent="MarginContainer/VBoxContainer/TradeHBox"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sell")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SellTitle" type="Label" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Sell"
+horizontal_alignment = 1
+
+[node name="QtyRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="SellMinus" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer/VBoxContainer/QtyRow"]
+custom_minimum_size = Vector2(60, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "-"
+
+[node name="SellQtyLabel" type="Label" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer/VBoxContainer/QtyRow"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+
+[node name="SellPlus" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer/VBoxContainer/QtyRow"]
+custom_minimum_size = Vector2(60, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "+"
+
+[node name="PresetRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Sell5" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer/VBoxContainer/PresetRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "+5"
+
+[node name="Sell10" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer/VBoxContainer/PresetRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "+10"
+
+[node name="SellMax" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer/VBoxContainer/PresetRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Max"
+
+[node name="SellReset" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer/VBoxContainer/PresetRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Reset"
+
+[node name="SellTotalLabel" type="Label" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Total: $0"
+horizontal_alignment = 1
+
+[node name="SellButton" type="Button" parent="MarginContainer/VBoxContainer/TradeHBox/SellSection/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sell"
+
+[node name="FooterHBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LeaveButton" type="Button" parent="MarginContainer/VBoxContainer/FooterHBox"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Leave Market"
