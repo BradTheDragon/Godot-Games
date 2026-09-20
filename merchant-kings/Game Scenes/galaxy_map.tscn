@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://lx0dxlqs702b" path="res://Game Scenes/shop_ui.tscn" id="5_puawf"]
 [ext_resource type="PackedScene" uid="uid://dprk435oc8ebg" path="res://Game Scenes/market_screen.tscn" id="6_market"]
 [ext_resource type="PackedScene" uid="uid://c32v7h1upwfuf" path="res://Game Scenes/items_panel.tscn" id="7_rwdof"]
+[ext_resource type="PackedScene" uid="uid://bn3a4j3vf0s1s" path="res://Game Scenes/menu_screen.tscn" id="8_w742y"]
 
 [node name="GalaxyMap" type="Node2D" unique_id=483608329]
 
@@ -29,9 +30,11 @@ num_connections = 3
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=41009458]
 
 [node name="Hud" parent="CanvasLayer" unique_id=1207894727 instance=ExtResource("3_0yri8")]
+visible = false
 z_index = 1
 
 [node name="IdleUIContainer" type="Control" parent="CanvasLayer" unique_id=691154644]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -51,3 +54,5 @@ z_index = 2
 
 [node name="Items Panel" parent="CanvasLayer" unique_id=1407334474 instance=ExtResource("7_rwdof")]
 visible = false
+
+[node name="MenuScreen" parent="CanvasLayer" unique_id=1657870188 instance=ExtResource("8_w742y")]

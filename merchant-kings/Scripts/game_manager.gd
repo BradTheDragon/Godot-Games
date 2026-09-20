@@ -9,32 +9,18 @@ enum PlayState { DOCKED, DECIDING, MOVING, SHOPPING }
 @onready var CAMERA = get_tree().root.get_node("/root/GalaxyMap/Camera2D")
 
 #########Global Variables########
-var starting_stats = {"starting_fuel": 6,
-			"starting_credits": 0,
-			"starting_cargo": 0,
-			"cargo_max": 15,
-			"market_min": 0,
-			"market_max": 0,
-			"market_volatility": 0,
-			"ignore_paths": false,
-			"ignore_visited": false
-			}
-var stats = {}
-var sector := 0
-var sector_mortgages := [0, 700, 1200, 1700, 2200]
-var current_mortgage := 0
+var starting_stats: Dictionary
+var stats: Dictionary
+var sector: int
+var sector_mortgages: Array
+var current_mortgage: int
 var fuel: int
-var credits := 350
-var cargo := 0
-var play_state := PlayState.DOCKED
-var upgrades := []
-var depleted_upgrades := []
-var items := [{
-		"name": "Emergancy Fuel",
-		"description": "Use this to gain one more fuel (one time use)",
-		"usable": true,
-		"unique": false
-	}]
+var credits: int
+var cargo: int
+var play_state: PlayState
+var upgrades: Array
+var depleted_upgrades: Array
+var items: Array
 
 #########Current Sector Variables########
 var stars = []
@@ -70,8 +56,46 @@ var move_timer: Timer
 @onready var open_item_panel_button = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/Hud/OpenItemPanelButton")
 @onready var item_panel = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/Items Panel")
 
+@onready var menu_screen = $/root/GalaxyMap/CanvasLayer/MenuScreen
+@onready var start_game_button: Button = $/root/GalaxyMap/CanvasLayer/MenuScreen/VBoxContainer/MarginContainer/VBoxContainer/StartGameButton
+@onready var quit_game_button: Button = $/root/GalaxyMap/CanvasLayer/MenuScreen/VBoxContainer/MarginContainer/VBoxContainer/QuitGameButton
 
 #########MAIN FUNCTIONS#########
+func start_game():
+	starting_stats = {"starting_fuel": 6,
+			"starting_credits": 0,
+			"starting_cargo": 0,
+			"cargo_max": 15,
+			"market_min": 0,
+			"market_max": 0,
+			"market_volatility": 0,
+			"ignore_paths": false,
+			"ignore_visited": false
+			}
+	stats = {}
+	sector = 0
+	sector_mortgages = [0, 700, 1200, 1700, 2200]
+	current_mortgage = 0
+	credits = 350
+	cargo = 0
+	play_state = PlayState.DOCKED
+	upgrades = []
+	depleted_upgrades = []
+	items = [{
+		"name": "Emergancy Fuel",
+		"description": "Use this to gain one more fuel (one time use)",
+		"usable": true,
+		"unique": false
+	}]
+	
+	menu_screen.visible = false
+	hud_ui.visible = true
+	idle_ui_container.visible = true
+	start_sector()
+
+func quit_game():
+	get_tree().quit()
+
 func start_sector():
 	await get_tree().process_frame
 	sector += 1
@@ -295,8 +319,11 @@ func _ready() -> void:
 	open_item_panel_button.pressed.connect(open_item_panel)
 	open_store_button.pressed.connect(open_store)
 	market_screen.left_market.connect(_on_left_market)
+	
+	start_game_button.pressed.connect(start_game)
+	quit_game_button.pressed.connect(quit_game)
+	
 	move_timer_label.visible = false
-	start_sector()
 
 ##########Item Functions##########
 func Emergancy_Fuel():

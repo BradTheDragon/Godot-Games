@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bn3a4j3vf0s1s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqw51"]
+bg_color = Color(0.14687136, 0.16149047, 0.12622616, 1)
+
+[node name="MenuScreen" type="Control" unique_id=1657870188]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1785984073]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bqw51")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2081012999]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.0
+offset_right = 316.0
+offset_bottom = 99.0
+grow_horizontal = 2
+
+[node name="Seperator" type="Control" parent="VBoxContainer" unique_id=1961340073]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1859557763]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 72
+text = "MERCHANT KINGS"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=860883777]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1656584501]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="StartGameButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=150148909]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Start Game"
+
+[node name="QuitGameButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=137131143]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Quit"
