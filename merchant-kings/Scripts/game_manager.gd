@@ -2,7 +2,7 @@ extends Node
 
 enum PlayState { DOCKED, DECIDING, MOVING, SHOPPING }
 
-@export var move_timer_seconds := 10.0
+@export var move_timer_seconds := 5.0
 
 @onready var SECTOR_GENERATOR = $/root/GalaxyMap/SectorGenerator
 @onready var SHIP = $/root/GalaxyMap/PlayerShip
@@ -121,7 +121,7 @@ func start_sector():
 				depleted_upgrades.append(upgrade.duplicate())
 			var keys = upgrade["effects"].keys()
 			for key in keys:
-				stats[key] += upgrade["effects"][key]
+				stats[key] += int(upgrade["effects"][key])
 	fuel = stats["starting_fuel"]
 	cargo = clamp(0 + stats["starting_cargo"], 0, stats["cargo_max"])
 	credits += stats["starting_credits"]

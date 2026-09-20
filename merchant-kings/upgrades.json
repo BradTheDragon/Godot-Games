@@ -45,7 +45,7 @@
 		"name": "Trade War",
 		"description": "Markets are more volatile in the next sector",
 		"price": 200,
-		"effects": {"market_volatility": 2},
+		"effects": {"market_volatility": 1},
 		"isdone": false
 	}
 ]
