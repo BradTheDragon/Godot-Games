@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgwvkntsal3c6"]
+[gd_scene format=3 uid="uid://bgwvkntsal3c6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77dwd"]
 bg_color = Color(0.133333, 0.133333, 0.133333, 0.941176)
 
-[node name="FinishSectorUI" type="Control"]
+[node name="FinishSectorUI" type="Control" unique_id=542397034]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=487620832]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_77dwd")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=288433803]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,40 +32,40 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 500
 theme_override_constants/margin_bottom = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=399610106]
 layout_mode = 2
 
-[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=441758472]
 layout_mode = 2
 theme_override_font_sizes/font_size = 94
 text = "SECTOR COMPLETE"
 horizontal_alignment = 1
 
-[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer" unique_id=730540360]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=651010050]
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1116538851]
 layout_mode = 2
 theme_override_constants/separation = 55
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1641811740]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control"]
-layout_mode = 2
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control" unique_id=1944561966]
+layout_mode = 0
 offset_top = 4.0
 offset_right = 720.0
 offset_bottom = 59.0
 theme_override_font_sizes/font_size = 40
 text = "Score:"
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control" unique_id=714551097]
 layout_mode = 1
 offset_right = 720.0
 offset_bottom = 55.0
@@ -73,19 +73,19 @@ theme_override_font_sizes/font_size = 40
 text = "+500"
 horizontal_alignment = 2
 
-[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=297606043]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control2"]
-layout_mode = 2
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control2" unique_id=221826486]
+layout_mode = 0
 offset_top = 4.0
 offset_right = 720.0
 offset_bottom = 59.0
 theme_override_font_sizes/font_size = 40
 text = "Mortgage:"
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control2"]
-layout_mode = 2
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control2" unique_id=1649639677]
+layout_mode = 0
 offset_top = 4.0
 offset_right = 720.0
 offset_bottom = 59.0
@@ -93,14 +93,14 @@ theme_override_font_sizes/font_size = 40
 text = "-400"
 horizontal_alignment = 2
 
-[node name="seperator" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="seperator" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1669875040]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1726042895]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control3"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control3" unique_id=845314457]
 layout_mode = 0
 offset_top = 4.0
 offset_right = 720.0
@@ -108,7 +108,7 @@ offset_bottom = 59.0
 theme_override_font_sizes/font_size = 40
 text = "Final Credits:"
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control3"]
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control3" unique_id=839271516]
 layout_mode = 0
 offset_top = 4.0
 offset_right = 720.0
@@ -117,25 +117,34 @@ theme_override_font_sizes/font_size = 40
 text = "100"
 horizontal_alignment = 2
 
-[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1274531047]
 custom_minimum_size = Vector2(0, 225)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2043013116]
 layout_mode = 2
 theme_override_constants/margin_left = 60
 theme_override_constants/margin_right = 60
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1430596238]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Go To Store"
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1667537816]
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.682353, 0, 0, 1)
 theme_override_font_sizes/font_size = 95
 text = "GAME OVER"
 horizontal_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="." unique_id=491974021]
+layout_mode = 0
+offset_left = 1701.0
+offset_top = 999.0
+offset_right = 1876.0
+offset_bottom = 1059.0
+theme_override_font_sizes/font_size = 24
+text = "Main Menu"

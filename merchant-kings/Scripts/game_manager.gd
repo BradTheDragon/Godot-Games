@@ -49,6 +49,7 @@ var move_timer: Timer
 @onready var final_credits_label = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control3/Label3")
 @onready var open_store_button = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Button")
 @onready var game_over_label = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Label")
+@onready var main_menu_button: Button = $/root/GalaxyMap/CanvasLayer/FinishSectorUI/MainMenuButton
 
 #########Shop / Market UI / Item Panel###########
 @onready var shop_ui = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/ShopUI")
@@ -95,6 +96,12 @@ func start_game():
 
 func quit_game():
 	get_tree().quit()
+
+func open_main_menu():
+	reset_map()
+	finish_sector_ui.visible = false
+	idle_ui_container.visible = false
+	menu_screen.visible = true
 
 func start_sector():
 	await get_tree().process_frame
@@ -318,6 +325,7 @@ func _ready() -> void:
 	finish_sector_button.pressed.connect(finish_sector)
 	open_item_panel_button.pressed.connect(open_item_panel)
 	open_store_button.pressed.connect(open_store)
+	main_menu_button.pressed.connect(open_main_menu)
 	market_screen.left_market.connect(_on_left_market)
 	
 	start_game_button.pressed.connect(start_game)
