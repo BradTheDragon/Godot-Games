@@ -4,9 +4,9 @@ enum PlayState { DOCKED, DECIDING, MOVING, SHOPPING }
 
 @export var move_timer_seconds := 10.0
 
-@onready var SECTOR_GENERATOR = get_tree().root.get_node("/root/GalaxyMap/SectorGenerator")
-@onready var SHIP = get_tree().root.get_node("/root/GalaxyMap/PlayerShip")
-@onready var CAMERA = get_tree().root.get_node("/root/GalaxyMap/Camera2D")
+@onready var SECTOR_GENERATOR = $/root/GalaxyMap/SectorGenerator
+@onready var SHIP = $/root/GalaxyMap/PlayerShip
+@onready var CAMERA = $/root/GalaxyMap/Camera2D
 
 #########Global Variables########
 var starting_stats: Dictionary
@@ -24,9 +24,9 @@ var items: Array
 
 #########Current Sector Variables########
 var stars = []
-@onready var path_container = get_tree().root.get_node("/root/GalaxyMap/PathContainer")
-@onready var star_container = get_tree().root.get_node("/root/GalaxyMap/StarContainer")
-@onready var idle_ui_container = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/IdleUIContainer")
+@onready var path_container = $/root/GalaxyMap/PathContainer
+@onready var star_container = $/root/GalaxyMap/StarContainer
+@onready var idle_ui_container = $/root/GalaxyMap/CanvasLayer/IdleUIContainer
 
 #########Ship Variables########
 var current_star: Object
@@ -34,28 +34,28 @@ var current_star: Object
 var move_timer: Timer
 
 #########HUD UI Variables#########
-@onready var hud_ui = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/Hud")
-@onready var credits_label = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/Hud/HBoxContainer/Credits")
-@onready var fuel_label = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/Hud/HBoxContainer/Fuel")
-@onready var cargo_label = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/Hud/HBoxContainer/Cargo")
-@onready var mortgage_label = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/Hud/Mortgage")
-@onready var finish_sector_button = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/Hud/FinishSectorButton")
-@onready var move_timer_label = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/Hud/MoveTimerLabel")
+@onready var hud_ui = $/root/GalaxyMap/CanvasLayer/Hud
+@onready var credits_label = $/root/GalaxyMap/CanvasLayer/Hud/HBoxContainer/Credits
+@onready var fuel_label = $/root/GalaxyMap/CanvasLayer/Hud/HBoxContainer/Fuel
+@onready var cargo_label = $/root/GalaxyMap/CanvasLayer/Hud/HBoxContainer/Cargo
+@onready var mortgage_label = $/root/GalaxyMap/CanvasLayer/Hud/Mortgage
+@onready var finish_sector_button = $/root/GalaxyMap/CanvasLayer/Hud/FinishSectorButton
+@onready var move_timer_label = $/root/GalaxyMap/CanvasLayer/Hud/MoveTimerLabel
 
 #########Finish Sector UI Variables#########
-@onready var finish_sector_ui = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/FinishSectorUI")
-@onready var final_score_label = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control/Label")
-@onready var final_mortgage_label = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control2/Label3")
-@onready var final_credits_label = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control3/Label3")
-@onready var open_store_button = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Button")
-@onready var game_over_label = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Label")
+@onready var finish_sector_ui = $/root/GalaxyMap/CanvasLayer/FinishSectorUI
+@onready var final_score_label = $/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control/Label
+@onready var final_mortgage_label = $/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control2/Label3
+@onready var final_credits_label = $/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Control3/Label3
+@onready var open_store_button = $/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Button
+@onready var game_over_label = $/root/GalaxyMap/CanvasLayer/FinishSectorUI/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Label
 @onready var main_menu_button: Button = $/root/GalaxyMap/CanvasLayer/FinishSectorUI/MainMenuButton
 
 #########Shop / Market UI / Item Panel###########
-@onready var shop_ui = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/ShopUI")
-@onready var market_screen = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/MarketScreen")
-@onready var open_item_panel_button = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/Hud/OpenItemPanelButton")
-@onready var item_panel = get_tree().root.get_node("/root/GalaxyMap/CanvasLayer/Items Panel")
+@onready var shop_ui = $/root/GalaxyMap/CanvasLayer/ShopUI
+@onready var market_screen = $/root/GalaxyMap/CanvasLayer/MarketScreen
+@onready var open_item_panel_button = $/root/GalaxyMap/CanvasLayer/Hud/OpenItemPanelButton
+@onready var item_panel = $"/root/GalaxyMap/CanvasLayer/Items Panel"
 
 @onready var menu_screen = $/root/GalaxyMap/CanvasLayer/MenuScreen
 @onready var start_game_button: Button = $/root/GalaxyMap/CanvasLayer/MenuScreen/VBoxContainer/MarginContainer/VBoxContainer/StartGameButton
