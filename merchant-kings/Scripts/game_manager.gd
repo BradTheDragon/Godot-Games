@@ -216,6 +216,7 @@ func _start_move_timer() -> void:
 		_update_move_timer_label()
 		return
 	move_timer.wait_time = move_timer_seconds
+	move_timer.paused = false
 	move_timer.start()
 	_update_move_timer_label()
 
