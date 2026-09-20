@@ -27,7 +27,7 @@ func set_sold(is_sold: bool):
 func update():
 	name_label.text = stored["name"]
 	description.text = stored["description"]
-	buy_button.text = "$" + str(stored["price"])
+	buy_button.text = "$" + str(int(stored["price"]))
 	
 func buy():
 	if game_manager.credits >= stored["price"]:
