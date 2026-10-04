@@ -1,5 +1,21 @@
 [gd_scene format=3 uid="uid://da8nnse7hu2wu"]
 
+[ext_resource type="Texture2D" uid="uid://s0chuffsx42o" path="res://player.png" id="1_80nbo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
+size = Vector2(36, 96)
+
 [node name="Game" type="Node2D" unique_id=1632840965]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=632217902]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=729284369]
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=856870492]
+scale = Vector2(3, 3)
+texture = ExtResource("1_80nbo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1023399553]
+shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="Enemy" type="CharacterBody2D" parent="." unique_id=1116341095]
