@@ -1,15 +1,31 @@
 [gd_scene format=3 uid="uid://da8nnse7hu2wu"]
 
 [ext_resource type="Texture2D" uid="uid://s0chuffsx42o" path="res://player.png" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://ba0383rakwb2w" path="res://enemy.gd" id="3_7jktm"]
+[ext_resource type="Texture2D" uid="uid://dkp1ayxgl63in" path="res://boarder.png" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://caunr14dlyq1c" path="res://ball.png" id="4_fc0e3"]
+[ext_resource type="PhysicsMaterial" uid="uid://b8p0h0aoqi33e" path="res://bounce.tres" id="4_ryrav"]
+[ext_resource type="Script" uid="uid://cjau8psnsg63b" path="res://ball.gd" id="6_eow3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(36, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqw51"]
+size = Vector2(36, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amwwe"]
+size = Vector2(1152, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bqw51"]
+radius = 24.0
 
 [node name="Game" type="Node2D" unique_id=1632840965]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=632217902]
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=729284369]
+[node name="Player" type="AnimatableBody2D" parent="." unique_id=1437422289 groups=["paddles"]]
+position = Vector2(-501, 0)
+script = ExtResource("3_7jktm")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=856870492]
 scale = Vector2(3, 3)
@@ -18,4 +34,57 @@ texture = ExtResource("1_80nbo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1023399553]
 shape = SubResource("RectangleShape2D_e2o6t")
 
-[node name="Enemy" type="CharacterBody2D" parent="." unique_id=1116341095]
+[node name="Enemy" type="AnimatableBody2D" parent="." unique_id=2044383528 groups=["paddles"]]
+position = Vector2(501, 0)
+script = ExtResource("3_7jktm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy" unique_id=201439440]
+scale = Vector2(3, 3)
+texture = ExtResource("1_80nbo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=2061728569]
+shape = SubResource("RectangleShape2D_bqw51")
+
+[node name="boarder" type="StaticBody2D" parent="." unique_id=1972827328]
+position = Vector2(0, 312)
+physics_material_override = ExtResource("4_ryrav")
+
+[node name="Boarder" type="Sprite2D" parent="boarder" unique_id=1929226205]
+texture_repeat = 2
+scale = Vector2(36, 3)
+texture = ExtResource("3_feb5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boarder" unique_id=1700353010]
+shape = SubResource("RectangleShape2D_amwwe")
+
+[node name="boarder2" type="StaticBody2D" parent="." unique_id=1275878173]
+position = Vector2(0, -312)
+physics_material_override = ExtResource("4_ryrav")
+
+[node name="Boarder" type="Sprite2D" parent="boarder2" unique_id=663248296]
+texture_repeat = 2
+scale = Vector2(36, 3)
+texture = ExtResource("3_feb5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boarder2" unique_id=401493997]
+shape = SubResource("RectangleShape2D_amwwe")
+
+[node name="Ball" type="RigidBody2D" parent="." unique_id=681472774]
+collision_priority = 5.0
+physics_material_override = ExtResource("4_ryrav")
+gravity_scale = 0.0
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 4
+linear_velocity = Vector2(1000, 50)
+linear_damp_mode = 1
+script = ExtResource("6_eow3j")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=268768554]
+scale = Vector2(3, 3)
+texture = ExtResource("4_fc0e3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=1967302223]
+shape = SubResource("CircleShape2D_bqw51")
+
+[connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]
