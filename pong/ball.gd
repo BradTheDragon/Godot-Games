@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var SPEED := 1000
+var SPEED := 6000
 var max_bounce_angle := 60.0
 
 func _on_body_entered(body: Node) -> void:
