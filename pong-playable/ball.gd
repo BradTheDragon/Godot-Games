@@ -1,7 +1,12 @@
 extends RigidBody2D
 
-var SPEED := 800
+var SPEED := 1250
 var max_bounce_angle := 60.0
+@onready var start_label: Label = $"../StartTimer"
+@onready var timer: Timer = $"../StartTimer/Timer"
+
+func _process(delta: float) -> void:
+	start_label.text = str(ceili(timer.time_left))
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("paddles"):
@@ -16,3 +21,6 @@ func _on_body_entered(body: Node) -> void:
 		print(SPEED)
 		linear_velocity = new_direction * SPEED
 	
+func _on_timer_timeout() -> void:
+	start_label.visible = false
+	linear_velocity = Vector2(SPEED, 50)

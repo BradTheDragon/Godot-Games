@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cjau8psnsg63b" path="res://ball.gd" id="6_eow3j"]
 [ext_resource type="Texture2D" uid="uid://cjn40gybgqmbx" path="res://indicator.png" id="8_j5wjh"]
 [ext_resource type="Script" uid="uid://dro417ngd0bvc" path="res://indicator.gd" id="9_vef74"]
+[ext_resource type="Script" uid="uid://csbuu0w75e4wx" path="res://restart.gd" id="10_hve3p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(36, 96)
@@ -21,6 +22,12 @@ size = Vector2(1152, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bqw51"]
 radius = 24.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bqw51"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_asyv3"]
+normal = Vector2(-1, 0)
 
 [node name="Game" type="Node2D" unique_id=1632840965]
 
@@ -79,7 +86,6 @@ gravity_scale = 0.0
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 4
-linear_velocity = Vector2(800, 50)
 linear_damp_mode = 1
 script = ExtResource("6_eow3j")
 
@@ -96,4 +102,51 @@ position = Vector2(-501, 0)
 texture = ExtResource("8_j5wjh")
 script = ExtResource("9_vef74")
 
+[node name="StartTimer" type="Label" parent="." unique_id=654493172]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 125
+text = "5"
+
+[node name="Timer" type="Timer" parent="StartTimer" unique_id=823607103]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="RestartButton" type="Button" parent="." unique_id=1765374644]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -15.5
+offset_right = 32.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+script = ExtResource("10_hve3p")
+
+[node name="LeftBoarder" type="Area2D" parent="." unique_id=1756049338]
+position = Vector2(-576, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoarder" unique_id=1563830629]
+shape = SubResource("WorldBoundaryShape2D_bqw51")
+
+[node name="RightBoarder" type="Area2D" parent="." unique_id=1405373889]
+position = Vector2(576, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBoarder" unique_id=1733413768]
+shape = SubResource("WorldBoundaryShape2D_asyv3")
+
 [connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]
+[connection signal="timeout" from="StartTimer/Timer" to="Ball" method="_on_timer_timeout"]
+[connection signal="pressed" from="RestartButton" to="RestartButton" method="_on_pressed"]
+[connection signal="body_entered" from="LeftBoarder" to="RestartButton" method="_on_left_boarder_body_entered"]
+[connection signal="body_entered" from="RightBoarder" to="RestartButton" method="_on_right_boarder_body_entered"]
